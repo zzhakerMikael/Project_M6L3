@@ -8,7 +8,7 @@ TOKEN = 'ВАШ_ТОКЕН_БОТА'
 bot = telebot.TeleBot(TOKEN)
 
 # Подключение к базе данных
-conn = sqlite3.connect('probability_tasks.db')
+conn = sqlite3.connect('probability_tasks.db', check_same_thread=False)
 cursor = conn.cursor()
 
 # Создание таблицы если не существует
@@ -70,7 +70,7 @@ def add_test_tasks():
 
 # Запуск бота
 if __name__ == '__main__':
-    add_test_tasks()  # Добавляем тестовые задачи при запуске
+     # Добавляем тестовые задачи при запуске
     bot.infinity_polling(skip_pending=True)
 
 
